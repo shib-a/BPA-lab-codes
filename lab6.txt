@@ -1,0 +1,67 @@
+org 0x0
+vec0: word $undefined, 0x180
+vec1: word $int_vu_1, 0x180
+vec2: word $undefined, 0x180
+vec3: word $int_vu_3, 0x180
+vec4: word $undefined, 0x180
+vec5: word $undefined, 0x180
+vec6: word $undefined, 0x180
+vec7: word $undefined, 0x180
+vec8: word $undefined, 0x180
+vec9: word $undefined, 0x180
+
+org 0x048
+undefined: iret
+x: word ?
+max: word 0x001B
+min: word 0xFFED
+
+start:
+	di
+	cla
+	ld #0x9
+	out 3
+	ld #0xb
+	out 7
+	ei
+	jump func
+func:
+	di
+	ld x
+	add #0x3
+	call odz_check
+	st x
+	ei
+	jump func
+
+odz_check:
+	cmp max
+	bmi check_min
+	jump load_min
+check_min:
+	cmp min
+	bpl ret_check
+load_min: 
+	ld min
+ret_check:
+	ret
+	
+int_vu_1:
+	ld x
+	nop
+	asl
+	asl
+	add x
+	sub #0x08
+	out 2
+	nop
+	iret
+	
+int_vu_3:
+	nop
+	in 6
+	add x
+	st x
+	out 6
+	nop
+	iret
