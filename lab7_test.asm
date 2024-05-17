@@ -14,8 +14,17 @@ test_1:
 	push
 	word 0x0F01
 	cmp res_1
-	beq exit
+	beq correct
+	ld #0
+	st res
 exit:
+ 	pop
+ 	pop
+ 	cla
+ 	ret
+ correct:
  	ld res
  	inc
  	st res
+ 	beq exit
+ 	
