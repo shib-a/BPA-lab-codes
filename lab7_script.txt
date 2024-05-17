@@ -22,7 +22,8 @@ mwrite 0088009208 ; SP-1 -> SP, AR
 mwrite 0200000000 ; DR -> MEM(AR)
 mwrite 80C4101040 ; GOTO INT @ C4
 mdecodeall
-maddress
+
+
 mwrite 0080009008 
 mwrite 0100000000
 mwrite 0020009001 
