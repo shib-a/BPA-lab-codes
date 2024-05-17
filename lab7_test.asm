@@ -18,12 +18,16 @@ main:
 	hlt
 	call test_4 
 	hlt
+	ld res
+	cmp #0x4
+	hlt
 test_1:
 	ld arg_1_1
 	push
 	ld arg_1_2
 	push
 	word 0x0F01
+	pop
 	nop
 	cmp res_1
 	beq correct_1
@@ -36,10 +40,10 @@ correct_1:	bnc incorrect_1
  	inc
  	st res
  	jump exit
-exit:
- 	pop
- 	pop
- 	cla
+exit:	
+	pop
+	pop
+ 	cla	
  	ret
 test_2:
 	ld arg_2_1
@@ -47,6 +51,7 @@ test_2:
 	ld arg_2_2
 	push
 	word 0x0F01
+	pop
 	nop
 	cmp res_2
 	beq correct_2
@@ -69,6 +74,7 @@ test_3:
 	push
 	push
 	word 0x0F01
+	pop
 	nop
 	cmp res_3
 	beq correct_3
@@ -90,6 +96,7 @@ test_4:
 	ld #0x0
 	push
 	word 0x0F01
+	pop
 	nop
 	cmp res_4
 	beq correct_4
