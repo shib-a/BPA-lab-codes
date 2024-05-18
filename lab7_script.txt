@@ -22,7 +22,7 @@ mwrite 0020009001 ; DR -> BR
 mwrite 0080009408 ; SP+1 -> AR
 mwrite 0100000000 ; MEM(AR)-> DR
 mwrite 0001009B21 ; ~BR & ~DR -> DR
-mwrite 0001809B01 ; ~DR -> DR 
+mwrite 0001809101 ; ~DR -> DR 
 //mwrite 0010C09220                   ~BR ? AC, N, Z, V
 //mwrite 0001809021 ; BR +? DR -> DR
 mwrite 0088009208 ; SP-1 -> SP, AR
@@ -30,6 +30,7 @@ mwrite 0200000000 ; DR -> MEM(AR)
 mwrite 80C4101040 ; GOTO INT @ C4
 mdecodeall
 
+ 0010C09220                   ~BR ? AC, N, Z, V = 0000 0000 0000 0001 1000 0000 1001 0001 0000 0001 = 0001809101
 
 mwrite 0080009008 
 mwrite 0100000000
